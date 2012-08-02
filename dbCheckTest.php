@@ -1,5 +1,13 @@
 <?php
-	foreach( $_ENV as  $key => $value ) {
-		echo('key ' .$key ' is set to ' .$value .'<br />');
-	}
+echo('<pre>');
+	print_r($_SERVER);
+echo('</pre>');
+
+echo('<br />');
+
+echo('<pre>');
+	print_r($_ENV);
+echo('</pre>');
+
+echo('should be printed');
 ?>
