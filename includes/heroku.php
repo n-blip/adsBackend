@@ -6,7 +6,7 @@ if(	isset($_ENV['CLEARDB_DATABASE_URL']) &&
 	echo('in the if true statement <br />');
 	
 	//parse out the heroku details for cleardb
-	$dbDetails = substr($_ENV['CLEARDB_DATABASE_URL'], 7);
+	$dbDetails = substr($_ENV['CLEARDB_DATABASE_URL'], 8);
 	
 	echo('dbdetails -----------------------------------<br />');
 	echo('<pre>');
