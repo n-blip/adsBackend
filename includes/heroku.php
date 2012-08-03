@@ -3,29 +3,13 @@
 if(	isset($_ENV['CLEARDB_DATABASE_URL']) && 
 	($_ENV['CLEARDB_DATABASE_URL']!= '') && 
 	(strstr($_ENV['CLEARDB_DATABASE_URL'], 'mysql://') != FALSE)) {
-	echo('in the if true statement <br />');
 	
 	//parse out the heroku details for cleardb
 	$dbDetails = substr($_ENV['CLEARDB_DATABASE_URL'], 8);
 	
-	echo('dbdetails -----------------------------------<br />');
-	echo('<pre>');
-		print_r($dbDetails);
-	echo('</pre>');
-	
 	$portions = explode('@', $dbDetails);
 	
-	echo('portions -----------------------------------<br />');
-	echo('<pre>');
-		print_r($portions);
-	echo('</pre>');
-	
 	$loginPass = explode(':', $portions[0]);
-	
-	echo('loginPass -----------------------------------<br />');
-	echo('<pre>');
-		print_r($loginPass);
-	echo('</pre>');
 	
 	$login = $loginPass[0];
 	$pass = $loginPass[1];
