@@ -55,8 +55,8 @@
               <li class="divider"></li>
               <li><a href="#">Sign Out</a></li>
             </ul>
+            -->
           </div>
-          -->
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
