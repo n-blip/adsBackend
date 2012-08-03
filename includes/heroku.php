@@ -33,6 +33,6 @@ if(	isset($_ENV['CLEARDB_DATABASE_URL']) &&
 
 }
 else {
-	die('clearDb details not specified, please make sure this addon is installed');
+	die('clearDb details not specified, please make sure the clear db addon is installed');
 }
 ?>
