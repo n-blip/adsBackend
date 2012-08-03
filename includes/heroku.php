@@ -13,14 +13,14 @@ if(	isset($_ENV['CLEARDB_DATABASE_URL']) &&
 		print_r($dbDetails);
 	echo('</pre>');
 	
-	$portions = explode($dbDetails, '@');
+	$portions = explode('@', $dbDetails);
 	
 	echo('portions -----------------------------------<br />');
 	echo('<pre>');
 		print_r($portions);
 	echo('</pre>');
 	
-	$loginPass = explode($portions[0], ':');
+	$loginPass = explode(':', $portions[0]);
 	
 	echo('loginPass -----------------------------------<br />');
 	echo('<pre>');
