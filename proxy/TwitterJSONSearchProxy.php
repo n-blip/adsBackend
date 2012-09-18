@@ -153,12 +153,12 @@ class TwitterJSONSearchProxy
 		';
 		$r = mysql_query($q, CONN);
 		if ((mysql_error()) && (mysql_error() == "Table 'twittersearch' already exists")) {
-			echo 'could not create the twittersearchTable, db says: ' .mysql_error();
-			echo 'creating the search term entry';
+			echo 'could not create the twittersearchTable, db says: ' .mysql_error() .'<br />';
+			echo 'creating the search term entry <br />';
 			$this->initSearchTerm();
 			
 		} else if ((mysql_error()) && (mysql_error() != "Table 'twittersearch' already exists")) {
-			echo "there was a larger issue, aborting. db says: " .mysql_error();
+			echo "there was a larger issue, aborting. db says: " .mysql_error() .'<br />';
 			die();
 		}
 	}
