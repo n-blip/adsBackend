@@ -14,11 +14,19 @@ if(	isset($_ENV['CLEARDB_DATABASE_URL']) &&
 	$login = $loginPass[0];
 	$pass = $loginPass[1];
 	
-	$server = $portions[1];
+	$serverPortions = explode('/', $portions[1]);
+	$server = $serverPortions[0];
+	$databasePortion = explode('?', $serverPortions[1]);
+	$database = $databasePortion[0];
+	
+	
+	
 	echo('full server url = ' .$_ENV['CLEARDB_DATABASE_URL'] .'<br />');
 	echo('login = ' .$login .'<br />');
 	echo('pass = ' .$pass .'<br />');
 	echo('server = ' .$server .'<br />');
+	echo('database = ' .$database .'<br />');
+	
 	
 
 	define('DB_USER', 'b23e08cd756bd8');
