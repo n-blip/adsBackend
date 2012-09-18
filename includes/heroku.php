@@ -16,23 +16,24 @@ if(	isset($_ENV['CLEARDB_DATABASE_URL']) &&
 	
 	$serverPortions = explode('/', $portions[1]);
 	$server = $serverPortions[0];
+	
 	$databasePortion = explode('?', $serverPortions[1]);
 	$database = $databasePortion[0];
 	
 	
 	
-	echo('full server url = ' .$_ENV['CLEARDB_DATABASE_URL'] .'<br />');
-	echo('login = ' .$login .'<br />');
-	echo('pass = ' .$pass .'<br />');
-	echo('server = ' .$server .'<br />');
-	echo('database = ' .$database .'<br />');
+	//echo('full server url = ' .$_ENV['CLEARDB_DATABASE_URL'] .'<br />');
+	//echo('login = ' .$login .'<br />');
+	//echo('pass = ' .$pass .'<br />');
+	//echo('server = ' .$server .'<br />');
+	//echo('database = ' .$database .'<br />');
 	
 	
 
-	define('DB_USER', 'b23e08cd756bd8');
-	define('DB_PASSWORD', '07a735e2');
-	define('DB_HOST', 'us-cdbr-east.cleardb.com');
-	define('DB_NAME', 'heroku_60507ed4873ed71');
+	define('DB_USER', $login);
+	define('DB_PASSWORD', $pass);
+	define('DB_HOST', $server);
+	define('DB_NAME', $database);
 	
 	define('CONN', mysql_connect(DB_HOST, DB_USER, DB_PASSWORD));
 	
