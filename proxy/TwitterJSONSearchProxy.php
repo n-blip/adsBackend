@@ -128,6 +128,10 @@ class TwitterJSONSearchProxy
 			
 			print "array count = " .count($arr) .'<br />';
 			
+			if (!isset($arr['lastUpdated'])) {
+				die('the search term has not been setup properly');
+			}
+			
 			print "is cached? q = " .$q ."<br>";
 			print "is cached? last modified = " .$arr[0] ."<br>";
 			print "is cached? now = " .$now ."<br>";
