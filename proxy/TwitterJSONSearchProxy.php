@@ -28,9 +28,16 @@ class TwitterJSONSearchProxy
 		$this->_cached          = false; 
 		$this->_cachedFileName  = "twitter.cache";
 		$this->_cacheFolderName = "cache"; 
-		$this->_cacheFileTime   = 3600000; // file time cache in milliseconds, 3,600,000 = 1hr  
+		
 		$this->_testMode 		= $testing;
 		$this->_init			= $init;
+		
+		if ($this->_testMode == TRUE) {
+			$this->_cacheFileTime   = 30; // file time cache in milliseconds, 3,600,000 = 1hr  
+		}
+		else {
+			$this->_cacheFileTime   = 3600000; // file time cache in milliseconds, 3,600,000 = 1hr  
+		}
 		
 		if ($this->_testMode == TRUE) {
 			echo "heroku db host = " .DB_HOST .'<br />';
