@@ -181,6 +181,7 @@ class TwitterJSONSearchProxy
 	private function initSearchTerm() {
 		//check to see if there is a row for this search term already
 		$q = 'SELECT count(*) FROM twittersearch WHERE searchTerm = "' .$this->_searchString .'"';
+		if ($this->_testMode) {print "(init) created a  row, q = " .$q ."<br> ";}
 		$r = mysql_query($q, CONN) or die('could not select the number of rows for the search term in initting');
 		$arr = mysql_fetch_array($r);
 		$numRows = $arr['count(*)'];
@@ -188,7 +189,7 @@ class TwitterJSONSearchProxy
 		if ($numRows == 0) {
 			$q = 'INSERT INTO twittersearch (searchTerm) VALUES ("' .$this->_searchString .'")';
 			$r = mysql_query($q, CONN) or die('could not create the new row for the search term in init()');
-			if ($this->_testMode) {print "(init) created a  row<br>";}
+			if ($this->_testMode) {print "(init) created a  row, q = " .$q ."<br> ";}
 		}
 		else {
 			if ($this->_testMode) {print "(init) no need to create a row<br>";}
