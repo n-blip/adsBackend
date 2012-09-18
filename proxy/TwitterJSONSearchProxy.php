@@ -39,7 +39,6 @@ class TwitterJSONSearchProxy
 		if ($this->_init == TRUE) {
 			echo "creating the database table for twitterSearch<br />";
 			$this->initDatabase();
-			$this->initSearchTerm();
 		}
 		
 		if ($this->_testMode == TRUE) {
@@ -153,8 +152,13 @@ class TwitterJSONSearchProxy
 										) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1
 		';
 		$r = mysql_query($q, CONN);
-		if (mysql_error() == "Table 'twittersearch' already exists") {
+		if ((mysql_error()) && (mysql_error() == "Table 'twittersearch' already exists")) {
 			echo 'could not create the twittersearchTable, db says: ' .mysql_error();
+			echo 'creating the search term entry';
+			$this->initSearchTerm();
+			
+		} else if ((mysql_error()) && (mysql_error() != "Table 'twittersearch' already exists")) {
+			echo "there was a larger issue, aborting. db says: " .mysql_error();
 			die();
 		}
 	}
