@@ -23,7 +23,7 @@ class TwitterJSONSearchProxy
 	{
 		
 		$this->_searchString 	= $searchTerm;
-		$this->_queryString     = 'q=' .urldecode($searchTerm);
+		$this->_queryString     = 'q=' .$searchTerm;
 		$this->_searchURL       = "http://search.twitter.com/search.json";
 		$this->_cached          = false; 
 		$this->_cachedFileName  = "twitter.cache";
@@ -229,6 +229,6 @@ if ($testing == TRUE) {
 
 
 
-$t = new TwitterJSONSearchProxy(urlencode($_GET['searchTerm']), $testing, $init);
+$t = new TwitterJSONSearchProxy($_GET['searchTerm'], $testing, $init);
 $t->display();
 ?>
