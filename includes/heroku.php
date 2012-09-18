@@ -15,7 +15,7 @@ if(	isset($_ENV['CLEARDB_DATABASE_URL']) &&
 	$pass = $loginPass[1];
 	
 	$server = $portions[1];
-
+	echo('full server url = ' .$_ENV['CLEARDB_DATABASE_URL'] .'<br />');
 	echo('login = ' .$login .'<br />');
 	echo('pass = ' .$pass .'<br />');
 	echo('server = ' .$server .'<br />');
