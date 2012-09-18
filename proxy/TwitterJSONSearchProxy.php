@@ -16,7 +16,7 @@ class TwitterJSONSearchProxy
 	private $_cached;
 	private $_ch;
 	
-	public function TwitterJSONSearchProxy($searchTerm, $testing)
+	public function TwitterJSONSearchProxy($searchTerm, $testing, $init=FALSE)
 	{
 		
 		$this->_searchString 	= $searchTerm;
@@ -27,12 +27,17 @@ class TwitterJSONSearchProxy
 		$this->_cacheFolderName = "cache"; 
 		$this->_cacheFileTime   = 3600000; // file time cache in milliseconds, 3,600,000 = 1hr  
 		$this->_testMode 		= $testing;
+		$this->_init			= $init;
 		
 		if ($this->_testMode == TRUE) {
 			echo "heroku db host = " .DB_HOST .'<br />';
 		}
 		
-		$this->initDb();
+		if ($this->_init == TRUE) {
+			echo "creating the database table for twitterSearch<br />";
+			$this->initDatabase();
+			$this->initSearchTerm();
+		}
 		
 		if ($this->_testMode == TRUE) {
 			$this->testDatabase();
@@ -134,7 +139,20 @@ class TwitterJSONSearchProxy
 		print (string) $this->_results;
 	}
 	
-	private function initDb() {
+	private function initDatabase() {
+		$q = '
+		CREATE TABLE `twitterSearchTest` (
+										  `recno` int(11) NOT NULL AUTO_INCREMENT,
+										  `searchTerm` varchar(100) DEFAULT NULL,
+										  `searchResults` text,
+										  `lastResult` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+										  PRIMARY KEY (`recno`)
+										) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1
+		';
+		$r = mysql_query($q, CONN) or die('could not create the twittersearchTable');
+	}
+	
+	private function initSearchTerm() {
 		//check to see if there is a row for this search term already
 		$q = 'SELECT count(*) FROM twittersearch WHERE searchTerm = "' .$this->_searchString .'"';
 		$r = mysql_query($q, CONN) or die('could not select the number of rows for the search term in initting');
@@ -171,10 +189,19 @@ else {
 	$testing = FALSE;
 }
 
+if ((isset($_GET['init'])) && ($_GET['init'] == 'true')) {
+	$init = TRUE;
+}
+else {
+	$init = FALSE;
+}
+
 if ($testing == TRUE) { 
 	echo('search term  = ' .$_GET['searchTerm']. '<br/>');
 }
 
-$t = new TwitterJSONSearchProxy($_GET['searchTerm'], $testing);
+
+
+$t = new TwitterJSONSearchProxy($_GET['searchTerm'], $testing, $init);
 $t->display();
 ?>
