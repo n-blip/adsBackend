@@ -22,7 +22,7 @@ if(	isset($_ENV['CLEARDB_DATABASE_URL']) &&
 	
 	
 	
-	if (isset($_GET[test]) && ($_GET[test] == TRUE) ) {
+	if (isset($_GET[testDBdetails]) && ($_GET[testDBdetails] == TRUE) ) {
 		echo('full server url = ' .$_ENV['CLEARDB_DATABASE_URL'] .'<br />');
 		echo('login = ' .$login .'<br />');
 		echo('pass = ' .$pass .'<br />');
