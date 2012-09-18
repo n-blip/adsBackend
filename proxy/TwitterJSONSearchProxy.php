@@ -32,20 +32,23 @@ class TwitterJSONSearchProxy
 		$this->_testMode 		= $testing;
 		$this->_init			= $init;
 		
+		//cache time
 		if ($this->_testMode == TRUE) {
 			$this->_cacheFileTime   = 30; // file time cache in milliseconds, 3,600,000 = 1hr  
 		}
 		else {
 			$this->_cacheFileTime   = 3600000; // file time cache in milliseconds, 3,600,000 = 1hr  
 		}
-		
-		if ($this->_testMode == TRUE) {
-			echo "heroku db host = " .DB_HOST .'<br />';
-		}
-		
+				
+		//init functions
 		if ($this->_init == TRUE) {
 			echo "creating the database table for twitterSearch<br />";
 			$this->initDatabase();
+		}
+		
+		//echo the host
+		if ($this->_testMode == TRUE) {
+			echo "heroku db host = " .DB_HOST .'<br />';
 		}
 		
 		if ($this->_testMode == TRUE) {
@@ -123,6 +126,7 @@ class TwitterJSONSearchProxy
 				print_r($arr);
 			print "</pre><br />";
 			
+			print "array count = " .count($arr) .'<br />';
 			
 			print "is cached? q = " .$q ."<br>";
 			print "is cached? last modified = " .$arr[0] ."<br>";
