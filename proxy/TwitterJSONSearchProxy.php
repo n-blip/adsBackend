@@ -152,7 +152,11 @@ class TwitterJSONSearchProxy
 										  PRIMARY KEY (`recno`)
 										) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1
 		';
-		$r = mysql_query($q, CONN) or die('could not create the twittersearchTable, db says: ' .mysql_error());
+		$r = mysql_query($q, CONN) 
+		if (mysql_error()) {
+			echo 'could not create the twittersearchTable, db says: ' .mysql_error();
+			die();
+		}
 	}
 	
 	private function initSearchTerm() {
