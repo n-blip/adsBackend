@@ -16,9 +16,9 @@ if(	isset($_ENV['CLEARDB_DATABASE_URL']) &&
 	
 	$server = $portions[1];
 
-	//echo('login = ' .$login .'<br />');
-	//echo('pass = ' .$pass .'<br />');
-	//echo('server = ' .$server .'<br />');
+	echo('login = ' .$login .'<br />');
+	echo('pass = ' .$pass .'<br />');
+	echo('server = ' .$server .'<br />');
 	
 
 	define('DB_USER', 'b23e08cd756bd8');
