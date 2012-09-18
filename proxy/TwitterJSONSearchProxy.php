@@ -152,7 +152,7 @@ class TwitterJSONSearchProxy
 										  PRIMARY KEY (`recno`)
 										) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1
 		';
-		$r = mysql_query($q, CONN) 
+		$r = mysql_query($q, CONN);
 		if (mysql_error() == "Table 'twittersearch' already exists") {
 			echo 'could not create the twittersearchTable, db says: ' .mysql_error();
 			die();
