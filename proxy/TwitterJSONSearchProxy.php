@@ -1,4 +1,7 @@
 <?php
+//to init:
+//http://whatever.herokuapp.com/proxy/TwitterJSONSearchProxy.php?searchTerm=nathank000&test=true&init=true
+
 
 include('../includes/heroku.php');
 //include('../includes/local.php');

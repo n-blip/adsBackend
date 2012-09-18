@@ -22,11 +22,13 @@ if(	isset($_ENV['CLEARDB_DATABASE_URL']) &&
 	
 	
 	
-	echo('full server url = ' .$_ENV['CLEARDB_DATABASE_URL'] .'<br />');
-	echo('login = ' .$login .'<br />');
-	echo('pass = ' .$pass .'<br />');
-	echo('server = ' .$server .'<br />');
-	echo('database = ' .$database .'<br />');
+	if (isset($_GET[test]) && ($_GET[test] == TRUE) ) {
+		echo('full server url = ' .$_ENV['CLEARDB_DATABASE_URL'] .'<br />');
+		echo('login = ' .$login .'<br />');
+		echo('pass = ' .$pass .'<br />');
+		echo('server = ' .$server .'<br />');
+		echo('database = ' .$database .'<br />');
+	}
 	
 	
 
