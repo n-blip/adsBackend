@@ -229,6 +229,6 @@ if ($testing == TRUE) {
 
 
 
-$t = new TwitterJSONSearchProxy($_GET['searchTerm'], $testing, $init);
+$t = new TwitterJSONSearchProxy(urlencode($_GET['searchTerm']), $testing, $init);
 $t->display();
 ?>
