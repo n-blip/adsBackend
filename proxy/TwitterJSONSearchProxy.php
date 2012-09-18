@@ -141,7 +141,7 @@ class TwitterJSONSearchProxy
 	
 	private function initDatabase() {
 		$q = '
-		CREATE TABLE `twitterSearchTest` (
+		CREATE TABLE `twitterSearch` (
 										  `recno` int(11) NOT NULL AUTO_INCREMENT,
 										  `searchTerm` varchar(100) DEFAULT NULL,
 										  `searchResults` text,
