@@ -1,5 +1,5 @@
 <?php
-
+//note for nothing
 if(	isset($_ENV['CLEARDB_DATABASE_URL']) && 
 	($_ENV['CLEARDB_DATABASE_URL']!= '') && 
 	(strstr($_ENV['CLEARDB_DATABASE_URL'], 'mysql://') != FALSE)) {
