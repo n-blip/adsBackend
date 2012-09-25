@@ -1,11 +1,11 @@
 <?php
 //note for nothing
+echo('environment-------------------------------------------<br />');
 echo('<pre>');
 	print_r($_ENV);
 echo('</pre>');
+echo('/environment-------------------------------------------<br />');
 
-die();
-die();
 
 if(	isset($_ENV['CRED_FILE']) && ($_ENV['CRED_FILE']!= '')) {
 	
@@ -26,10 +26,11 @@ if(	isset($_ENV['CRED_FILE']) && ($_ENV['CRED_FILE']!= '')) {
 	# e.g. for MYSQLS: 'MYSQLS_HOSTNAME' => $creds['MYSQLS']['MYSQLS_HOSTNAME'],
 );
 	
+echo('creds-------------------------------------------<br />');
 	echo('<pre>');
-	print_r($_ENV);
+	print_r($creds);
 	echo('</pre>');
-
+echo('/creds-------------------------------------------<br />');
 	die();
 	die();
 	
