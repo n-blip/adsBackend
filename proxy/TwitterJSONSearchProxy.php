@@ -167,15 +167,10 @@ class TwitterJSONSearchProxy
 										) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1
 		';
 		$r = mysql_query($q, CONN);
-		if ((mysql_error()) && (mysql_error() == "Table 'twittersearch' already exists")) {
-			echo 'could not create the twittersearchTable, db says: ' .mysql_error() .'<br />';
-			echo 'creating the search term entry <br />';
-			$this->initSearchTerm();
+		
+		$this->initSearchTerm();
 			
-		} else {
-			echo "there was a larger issue, aborting. db says: " .mysql_error() .'<br />';
-			die();
-		}
+		
 	}
 	
 	private function initSearchTerm() {
