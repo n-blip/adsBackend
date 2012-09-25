@@ -172,7 +172,7 @@ class TwitterJSONSearchProxy
 			echo 'creating the search term entry <br />';
 			$this->initSearchTerm();
 			
-		} else if ((mysql_error()) && (mysql_error() != "Table 'twittersearch' already exists")) {
+		} else {
 			echo "there was a larger issue, aborting. db says: " .mysql_error() .'<br />';
 			die();
 		}
