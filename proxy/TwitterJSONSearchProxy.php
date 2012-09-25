@@ -91,7 +91,7 @@ class TwitterJSONSearchProxy
 	private function readFromCache()
 	{
 		//connect to the database and get the json results
-		$q = 'SELECT searchResults FROM twittersearch WHERE searchTerm = "' .$this->_searchString .'"';
+		$q = 'SELECT searchResults FROM twitterSearch WHERE searchTerm = "' .$this->_searchString .'"';
 		$r = mysql_query($q, CONN) or die('could not fetch the cached search results');
 		$arr = mysql_fetch_array($r);
 		$searchResults = $arr['searchResults'];
@@ -105,14 +105,14 @@ class TwitterJSONSearchProxy
 	private function cacheThis()
 	{
 		//cache this in the database
-		$q = 'UPDATE twittersearch SET searchResults = "' .addslashes($this->_results) .'" WHERE searchTerm = "' .$this->_searchString .'"';
+		$q = 'UPDATE twitterSearch SET searchResults = "' .addslashes($this->_results) .'" WHERE searchTerm = "' .$this->_searchString .'"';
 		$r = mysql_query($q, CONN) or die('could not update the results in the database for caching');
 	}
 	
 	private function isCached()
 	{
 		//check the database for cached results
-		$q = 'SELECT UNIX_TIMESTAMP(lastResult) as lastUpdated FROM twittersearch WHERE searchTerm = "' .$this->_searchString .'"';
+		$q = 'SELECT UNIX_TIMESTAMP(lastResult) as lastUpdated FROM twitterSearch WHERE searchTerm = "' .$this->_searchString .'"';
 		$r = mysql_query($q, CONN) or die('could not query the database for caching check');
 		$arr = mysql_fetch_array($r);
 		
@@ -180,7 +180,7 @@ class TwitterJSONSearchProxy
 		$numRows = $arr['count(*)'];
 		
 		if ($numRows == 0) {
-			$q = 'INSERT INTO twittersearch (searchTerm) VALUES ("' .$this->_searchString .'")';
+			$q = 'INSERT INTO twitterSearch (searchTerm) VALUES ("' .$this->_searchString .'")';
 			$r = mysql_query($q, CONN) or die('could not create the new row for the search term in init()');
 			if ($this->_testMode) {print "(init) created a  row, q = " .$q ."<br> ";}
 		}
@@ -190,7 +190,7 @@ class TwitterJSONSearchProxy
 	}
 	
 	private function testDatabase() {
-		$q = "select * from twittersearch";
+		$q = "select * from twitterSearch";
 		$r = mysql_query($q, CONN);
 		$arr = mysql_fetch_array($r);
 		echo('database select test-------------------------------------<br />');
