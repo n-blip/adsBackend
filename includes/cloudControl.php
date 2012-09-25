@@ -1,12 +1,4 @@
 <?php
-//note for nothing
-echo('environment-------------------------------------------<br />');
-echo('<pre>');
-	print_r($_ENV);
-echo('</pre>');
-echo('/environment-------------------------------------------<br />');
-
-
 if(	isset($_ENV['CRED_FILE']) && ($_ENV['CRED_FILE']!= '')) {
 	
 	$string = file_get_contents($_ENV['CRED_FILE'], false);
@@ -26,35 +18,22 @@ if(	isset($_ENV['CRED_FILE']) && ($_ENV['CRED_FILE']!= '')) {
 	# e.g. for MYSQLS: 'MYSQLS_HOSTNAME' => $creds['MYSQLS']['MYSQLS_HOSTNAME'],
 );
 	
-echo('creds-------------------------------------------<br />');
-	echo('<pre>');
-	print_r($creds);
-	echo('</pre>');
-echo('/creds-------------------------------------------<br />');
-	die();
-	die();
 	
+	$login = $creds['MYSQLS']['MYSQLS_USERNAME'];
+	$pass = $creds['MYSQLS']['MYSQLS_PASSWORD'];
 	
-	//parse out the heroku details for cleardb
-	$dbDetails = substr($_ENV['CLEARDB_DATABASE_URL'], 8);
+	$server = $creds['MYSQLS']['MYSQLS_HOSTNAME'];
 	
-	$portions = explode('@', $dbDetails);
-	
-	$loginPass = explode(':', $portions[0]);
-	
-	$login = $loginPass[0];
-	$pass = $loginPass[1];
-	
-	$serverPortions = explode('/', $portions[1]);
-	$server = $serverPortions[0];
-	
-	$databasePortion = explode('?', $serverPortions[1]);
-	$database = $databasePortion[0];
-	
-	
+	$database = $creds['MYSQLS']['MYSQLS_DATABASE'];
 	
 	if (isset($_GET['testDBdetails']) && ($_GET['testDBdetails'] == TRUE) ) {
-		echo('full server url = ' .$_ENV['CLEARDB_DATABASE_URL'] .'<br />');
+	
+		echo('creds-------------------------------------------<br />');
+		echo('<pre>');
+		print_r($creds);
+		echo('</pre>');
+		echo('/creds-------------------------------------------<br /><br />');
+	
 		echo('login = ' .$login .'<br />');
 		echo('pass = ' .$pass .'<br />');
 		echo('server = ' .$server .'<br />');
@@ -75,6 +54,6 @@ echo('/creds-------------------------------------------<br />');
 
 }
 else {
-	die('clearDb details not specified, please make sure the clear db addon is installed');
+	die('DB details not specified, please make sure the db addon is installed');
 }
 ?>
