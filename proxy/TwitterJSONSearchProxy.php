@@ -3,7 +3,7 @@
 //http://whatever.herokuapp.com/proxy/TwitterJSONSearchProxy.php?searchTerm=nathank000&test=true&init=true
 
 
-include('../includes/heroku.php');
+include('../includes/db.php');
 //include('../includes/local.php');
 //comment added to make sure that I did not eff up git with config edit
 

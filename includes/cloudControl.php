@@ -38,6 +38,13 @@ if(	isset($_ENV['CRED_FILE']) && ($_ENV['CRED_FILE']!= '')) {
 		echo('pass = ' .$pass .'<br />');
 		echo('server = ' .$server .'<br />');
 		echo('database = ' .$database .'<br />');
+		
+		
+		echo('ENV-------------------------------------------<br />');
+		echo('<pre>');
+		print_r($_ENV);
+		echo('</pre>');
+		echo('/ENV-------------------------------------------<br /><br />');
 	}
 	
 	
