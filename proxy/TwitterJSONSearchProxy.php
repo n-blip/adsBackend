@@ -169,13 +169,11 @@ class TwitterJSONSearchProxy
 		$r = mysql_query($q, CONN);
 		
 		$this->initSearchTerm();
-			
-		
 	}
 	
 	private function initSearchTerm() {
 		//check to see if there is a row for this search term already
-		$q = 'SELECT count(*) FROM twittersearch WHERE searchTerm = "' .$this->_searchString .'"';
+		$q = 'SELECT count(*) FROM twitterSearch WHERE searchTerm = "' .$this->_searchString .'"';
 		if ($this->_testMode) {print "(init) created a  row, q = " .$q ."<br> ";}
 		$r = mysql_query($q, CONN) or die('could not select the number of rows for the search term in initting');
 		$arr = mysql_fetch_array($r);
