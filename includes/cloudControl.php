@@ -7,9 +7,32 @@ echo('</pre>');
 die();
 die();
 
-if(	isset($_ENV['CLEARDB_DATABASE_URL']) && 
-	($_ENV['CLEARDB_DATABASE_URL']!= '') && 
-	(strstr($_ENV['CLEARDB_DATABASE_URL'], 'mysql://') != FALSE)) {
+if(	isset($_ENV['CRED_FILE']) && ($_ENV['CRED_FILE']!= '')) {
+	
+	$string = file_get_contents($_ENV['CRED_FILE'], false);
+	if ($string == false) {
+    	die('FATAL: Could not read credentials file');
+	}
+
+	# the file contains a JSON string, decode it and return an associative array
+	$creds = json_decode($string, true);
+
+	# use credentials to set the configuration for your Add-on
+	# replace ADDON_NAME and PARAMETER with Add-on specific values
+	$config = array(
+    	'VAR1_NAME' => $creds['ADDON_NAME']['PARAMETER_1'],
+	    'VAR2_NAME' => $creds['ADDON_NAME']['PARAMETER_2'],
+    	'VAR3_NAME' => $creds['ADDON_NAME']['PARAMETER_3'],
+	# e.g. for MYSQLS: 'MYSQLS_HOSTNAME' => $creds['MYSQLS']['MYSQLS_HOSTNAME'],
+);
+	
+	echo('<pre>');
+	print_r($_ENV);
+	echo('</pre>');
+
+	die();
+	die();
+	
 	
 	//parse out the heroku details for cleardb
 	$dbDetails = substr($_ENV['CLEARDB_DATABASE_URL'], 8);
