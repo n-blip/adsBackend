@@ -1,13 +1,15 @@
 <?php  
 
-include('../includes/heroku.php');
+include('../includes/db.php');
+//importing a csv file directly into mysql
+//http://www.tech-recipes.com/rx/2345/import_csv_file_directly_into_mysql/ 
 
 // Get parameters from URL
 $center_lat = $_GET["lat"];
 $center_lng = $_GET["lng"];
 $radius = $_GET["radius"];
 $limit = $_GET["limit"];
-$client = $_GET['client'];
+$brand = $_GET['brand'];
 
 /*
 $center_lat = "40.7203421";
@@ -31,7 +33,7 @@ $query = sprintf("SELECT address1, city, state, zip, latitude, longitude, ( 3959
   
 //$query = "SELECT * FROM event";
 
-$result = mysql_query($query);
+$result = mysql_query($query, CONN);
 if (!$result) {
   die("Invalid query: " . mysql_error());
 }
