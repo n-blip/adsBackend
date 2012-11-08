@@ -45,9 +45,9 @@ while ($row = @mysql_fetch_assoc($result)){
   $node = $dom->createElement("marker");
   $newnode = $parnode->appendChild($node);
   $newnode->setAttribute("address1", $row['address1']);
-  $newnode->setAttribute("city", $row['city']);
-  $newnode->setAttribute("state", $row['state']);
-  $newnode->setAttribute("zip", $row['zip']);
+  $newnode->setAttribute("city", $row['town']);
+  $newnode->setAttribute("state", $row['county']);
+  $newnode->setAttribute("zip", $row['postcode']);
   $newnode->setAttribute("latitude", $row['latitude']);
   $newnode->setAttribute("longitude", $row['longitude']);
   $newnode->setAttribute("distance", $row['distance']);
