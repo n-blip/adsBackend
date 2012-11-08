@@ -23,7 +23,7 @@ $node = $dom->createElement("markers");
 $parnode = $dom->appendChild($node);
 
 // Search the rows in the markers table
-$query = sprintf("SELECT address1, city, state, zip, latitude, longitude, ( 3959 * acos( cos( radians('%s') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians('%s') ) + sin( radians('%s') ) * sin( radians( latitude ) ) ) ) AS distance FROM vauxhall_locations HAVING distance < '%s' ORDER BY distance LIMIT 0 , %s",
+$query = sprintf("SELECT address1, town, zip, postcode, latitude, longitude, ( 3959 * acos( cos( radians('%s') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians('%s') ) + sin( radians('%s') ) * sin( radians( latitude ) ) ) ) AS distance FROM vauxhall_locations HAVING distance < '%s' ORDER BY distance LIMIT 0 , %s",
   mysql_real_escape_string($center_lat),
   mysql_real_escape_string($center_lng),
   mysql_real_escape_string($center_lat),
