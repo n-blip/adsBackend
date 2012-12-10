@@ -44,11 +44,11 @@ header("Content-type: text/xml");
 while ($row = @mysql_fetch_assoc($result)){
   $node = $dom->createElement("marker");
   $newnode = $parnode->appendChild($node);
-  $newnode->setAttribute("locationName", $row['name']);  
-  $newnode->setAttribute("address1", $row['address1']);
-  $newnode->setAttribute("city", $row['town']);
-  $newnode->setAttribute("state", $row['county']);
-  $newnode->setAttribute("zip", $row['postcode']);
+  //$newnode->setAttribute("locationName", $row['name']);  
+  $newnode->setAttribute("address1", $row['address']);
+  $newnode->setAttribute("city", $row['city']);
+  $newnode->setAttribute("state", $row['state']);
+  $newnode->setAttribute("zip", $row['zipcode']);
   $newnode->setAttribute("latitude", $row['latitude']);
   $newnode->setAttribute("longitude", $row['longitude']);
   $newnode->setAttribute("distance", $row['distance']);
